@@ -1,7 +1,7 @@
 {
-  "name": "webpack-template",
-  "version": "1.0.1",
-  "description": "Webpack template repo with commonly used dependencies",
+  "name": "weather app",
+  "version": "1.0.0",
+  "description": "Weather app project for The Odin Project",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
