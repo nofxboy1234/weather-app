@@ -31,12 +31,18 @@ const processWeatherData = (data) => {
   };
 };
 
-(async () => {
+const showCurrentWeather = async (event) => {
   try {
-    const data = await getWeatherData('durban');
+    event.preventDefault();
+    const location = locationInput.value;
+    const data = await getWeatherData(location);
     const filteredData = processWeatherData(data);
     console.log(filteredData);
   } catch (err) {
     console.error(err);
   }
-})();
+};
+
+const button = document.querySelector('button');
+button.addEventListener('click', showCurrentWeather);
+const locationInput = document.getElementById('location');
