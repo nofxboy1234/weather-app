@@ -24,6 +24,9 @@ const getWeatherData = (location) => {
 
 const processWeatherData = (data) => {
   return {
+    location: data.location.name,
+    region: data.location.region,
+    country: data.location.country,
     condition: data.current.condition.text,
     icon: data.current.condition.icon,
     temp_c: data.current.temp_c,
