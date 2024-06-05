@@ -19,6 +19,7 @@ const getWeatherData = (location) => {
         }
       })
       .catch((err) => {
+        toggleLoadingMessage();
         console.error(err);
       });
   });
@@ -76,6 +77,7 @@ const showCurrentWeather = async (event) => {
     updateInfo(filteredData);
     // console.log(filteredData);
   } catch (err) {
+    toggleLoadingMessage();
     console.error(err);
   }
 };
