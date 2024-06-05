@@ -151,7 +151,7 @@ const locationInput = document.getElementById('location');
 const src_button = document.querySelector('button');
 src_button.addEventListener('click', showCurrentWeather);
 const loadingMessage = document.getElementById('loading-message');
-const locationDiv = document.getElementById('location');
+const locationDiv = document.getElementById('location-name');
 const regionDiv = document.getElementById('region');
 const countryDiv = document.getElementById('country');
 const conditionDiv = document.getElementById('condition');
