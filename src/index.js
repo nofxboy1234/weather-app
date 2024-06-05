@@ -38,7 +38,8 @@ const processWeatherData = (data) => {
 
 const updateIcon = (data) => {
   const icon = document.createElement('img');
-  icon.src = data.icon;
+  const iconUrl = `https://${data.icon.substring(2)}`;
+  icon.src = iconUrl;
 
   if (iconDiv.firstChild) {
     iconDiv.removeChild(iconDiv.firstChild);
