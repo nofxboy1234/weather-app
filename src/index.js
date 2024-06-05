@@ -15,7 +15,6 @@ const getWeatherData = (location) => {
 };
 
 const processWeatherData = (data) => {
-  console.log(data);
   return {
     condition: data.current.condition.text,
     icon: data.current.condition.icon,
