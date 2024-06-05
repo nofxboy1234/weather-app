@@ -114,7 +114,7 @@ const button = document.querySelector('button');
 button.addEventListener('click', showCurrentWeather);
 const loadingMessage = document.getElementById('loading-message');
 
-const locationDiv = document.getElementById('location');
+const locationDiv = document.getElementById('location-name');
 const regionDiv = document.getElementById('region');
 const countryDiv = document.getElementById('country');
 const conditionDiv = document.getElementById('condition');
