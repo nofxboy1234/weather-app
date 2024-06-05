@@ -1,16 +1,24 @@
 const getWeatherData = (location) => {
   return new Promise((resolve, reject) => {
     const apiKey = '8dbe756ea48f4c0da2395345241605';
-    const p = fetch(
+    // const apiKey = '8dbe756ea48f4c0da2395345241605zzz';
+    fetch(
       `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`,
       { mode: 'cors' },
-    );
-
-    p.then((response) => {
-      return response.json();
-    }).then((data) => {
-      resolve(data);
-    });
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.error) {
+          reject(new Error(data.error.message));
+        } else {
+          resolve(data);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   });
 };
 
@@ -24,7 +32,11 @@ const processWeatherData = (data) => {
 };
 
 (async () => {
-  const data = await getWeatherData('durban');
-  const filteredData = processWeatherData(data);
-  console.log(filteredData);
+  try {
+    const data = await getWeatherData('durban');
+    const filteredData = processWeatherData(data);
+    console.log(filteredData);
+  } catch (err) {
+    console.error(err);
+  }
 })();
