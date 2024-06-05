@@ -20,9 +20,26 @@ const getWeatherData = (location) => {
       })
       .catch((err) => {
         toggleLoadingMessage();
+        clearInfo();
         console.error(err);
       });
   });
+};
+
+const clearInfo = () => {
+  locationDiv.textContent = '';
+  regionDiv.textContent = '';
+  countryDiv.textContent = '';
+  conditionDiv.textContent = '';
+  removeIcon();
+  tempCDiv.textContent = '';
+  tempFDiv.textContent = '';
+};
+
+const removeIcon = () => {
+  if (iconDiv.firstChild) {
+    iconDiv.removeChild(iconDiv.firstChild);
+  }
 };
 
 const processWeatherData = (data) => {
@@ -42,9 +59,7 @@ const updateIcon = (data) => {
   const iconUrl = `https://${data.icon.substring(2)}`;
   icon.src = iconUrl;
 
-  if (iconDiv.firstChild) {
-    iconDiv.removeChild(iconDiv.firstChild);
-  }
+  removeIcon();
 
   iconDiv.appendChild(icon);
 };
@@ -78,6 +93,7 @@ const showCurrentWeather = async (event) => {
     // console.log(filteredData);
   } catch (err) {
     toggleLoadingMessage();
+    clearInfo();
     console.error(err);
   }
 };
