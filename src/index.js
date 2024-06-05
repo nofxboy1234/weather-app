@@ -34,12 +34,23 @@ const processWeatherData = (data) => {
   };
 };
 
+const updateIcon = (data) => {
+  const icon = document.createElement('img');
+  icon.src = data.icon;
+
+  if (iconDiv.firstChild) {
+    iconDiv.removeChild(iconDiv.firstChild);
+  }
+  
+  iconDiv.appendChild(icon);
+};
+
 const updateInfo = (data) => {
   locationDiv.textContent = data.location;
   regionDiv.textContent = data.region;
   countryDiv.textContent = data.country;
   conditionDiv.textContent = data.condition;
-  iconDiv.textContent = data.icon;
+  updateIcon(data);
   tempCDiv.textContent = `${data.temp_c} ℃`;
   tempFDiv.textContent = `${data.temp_c} ℉`;
 };
