@@ -34,13 +34,25 @@ const processWeatherData = (data) => {
   };
 };
 
+const updateInfo = (data) => {
+  locationDiv.textContent = data.location;
+  regionDiv.textContent = data.region;
+  countryDiv.textContent = data.country;
+  conditionDiv.textContent = data.condition;
+  iconDiv.textContent = data.icon;
+  tempCDiv.textContent = `${data.temp_c} ℃`;
+  tempFDiv.textContent = `${data.temp_c} ℉`;
+};
+
 const showCurrentWeather = async (event) => {
   try {
     event.preventDefault();
     const location = locationInput.value;
     const data = await getWeatherData(location);
     const filteredData = processWeatherData(data);
-    console.log(filteredData);
+
+    updateInfo(filteredData);
+    // console.log(filteredData);
   } catch (err) {
     console.error(err);
   }
@@ -55,5 +67,5 @@ const regionDiv = document.getElementById('region');
 const countryDiv = document.getElementById('country');
 const conditionDiv = document.getElementById('condition');
 const iconDiv = document.getElementById('icon');
-const tempCDiv = document.getElementById('tempC');
-const tempFDiv = document.getElementById('tempF');
+const tempCDiv = document.getElementById('temp-c');
+const tempFDiv = document.getElementById('temp-f');
