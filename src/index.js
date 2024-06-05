@@ -1,3 +1,5 @@
+import './style.css';
+
 const getWeatherData = (location) => {
   return new Promise((resolve, reject) => {
     const apiKey = '8dbe756ea48f4c0da2395345241605';
@@ -41,7 +43,7 @@ const updateIcon = (data) => {
   if (iconDiv.firstChild) {
     iconDiv.removeChild(iconDiv.firstChild);
   }
-  
+
   iconDiv.appendChild(icon);
 };
 
@@ -55,11 +57,18 @@ const updateInfo = (data) => {
   tempFDiv.textContent = `${data.temp_c} ℉`;
 };
 
+const toggleLoadingMessage = () => {
+  loadingMessage.classList.toggle('show-loading');
+};
+
 const showCurrentWeather = async (event) => {
   try {
     event.preventDefault();
+
+    toggleLoadingMessage();
     const location = locationInput.value;
     const data = await getWeatherData(location);
+    toggleLoadingMessage();
     const filteredData = processWeatherData(data);
 
     updateInfo(filteredData);
@@ -69,9 +78,10 @@ const showCurrentWeather = async (event) => {
   }
 };
 
+const locationInput = document.getElementById('location');
 const button = document.querySelector('button');
 button.addEventListener('click', showCurrentWeather);
-const locationInput = document.getElementById('location');
+const loadingMessage = document.getElementById('loading-message');
 
 const locationDiv = document.getElementById('location');
 const regionDiv = document.getElementById('region');

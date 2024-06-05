@@ -8,3 +8,11 @@
   font-family: 'MyFont';
   background: url('./icon.png');
 }
+
+.show-loading {
+  visibility: visible;
+}
+
+.hide-loading {
+  visibility: hidden;
+}
