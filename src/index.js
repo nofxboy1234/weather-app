@@ -59,6 +59,7 @@ const updateInfo = (data) => {
 };
 
 const toggleLoadingMessage = () => {
+  loadingMessage.classList.toggle('hide-loading');
   loadingMessage.classList.toggle('show-loading');
 };
 
