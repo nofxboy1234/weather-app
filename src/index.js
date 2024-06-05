@@ -55,7 +55,7 @@ const updateInfo = (data) => {
   conditionDiv.textContent = data.condition;
   updateIcon(data);
   tempCDiv.textContent = `${data.temp_c} ℃`;
-  tempFDiv.textContent = `${data.temp_c} ℉`;
+  tempFDiv.textContent = `${data.temp_f} ℉`;
 };
 
 const toggleLoadingMessage = () => {
