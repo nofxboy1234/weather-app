@@ -20,6 +20,7 @@ const getWeatherData = (location) => {
       })
       .catch((err) => {
         toggleLoadingMessage();
+        showErrorMessage(err);
         clearInfo();
         console.error(err);
       });
@@ -74,6 +75,14 @@ const updateInfo = (data) => {
   tempFDiv.textContent = `${data.temp_f} ℉`;
 };
 
+const showErrorMessage = (err) => {
+  errorMessageDiv.textContent = err;
+};
+
+const clearErrorMessage = () => {
+  errorMessageDiv.textContent = '';
+};
+
 const toggleLoadingMessage = () => {
   loadingMessage.classList.toggle('hide-loading');
   loadingMessage.classList.toggle('show-loading');
@@ -83,6 +92,7 @@ const showCurrentWeather = async (event) => {
   try {
     event.preventDefault();
 
+    clearErrorMessage();
     toggleLoadingMessage();
     const location = locationInput.value;
     const data = await getWeatherData(location);
@@ -93,6 +103,7 @@ const showCurrentWeather = async (event) => {
     // console.log(filteredData);
   } catch (err) {
     toggleLoadingMessage();
+    showErrorMessage(err);
     clearInfo();
     console.error(err);
   }
@@ -110,3 +121,4 @@ const conditionDiv = document.getElementById('condition');
 const iconDiv = document.getElementById('icon');
 const tempCDiv = document.getElementById('temp-c');
 const tempFDiv = document.getElementById('temp-f');
+const errorMessageDiv = document.getElementById('error-message');
