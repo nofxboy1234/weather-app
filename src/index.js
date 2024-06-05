@@ -49,3 +49,11 @@ const showCurrentWeather = async (event) => {
 const button = document.querySelector('button');
 button.addEventListener('click', showCurrentWeather);
 const locationInput = document.getElementById('location');
+
+const locationDiv = document.getElementById('location');
+const regionDiv = document.getElementById('region');
+const countryDiv = document.getElementById('country');
+const conditionDiv = document.getElementById('condition');
+const iconDiv = document.getElementById('icon');
+const tempCDiv = document.getElementById('tempC');
+const tempFDiv = document.getElementById('tempF');
